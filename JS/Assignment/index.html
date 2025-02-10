@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Problem Solving</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2{
+            color: #333;
+        }
+        .scenario{
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        input, select{
+            margin: 5px 0;
+            padding: 10px;
+            width: calc(100% - 22px);
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button{
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: #218838;
+        }
+        p{
+            font-weight: bold;
+        }
+        .details{
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>JS Problem Solving</h1>
+    <div class="scenario">
+        <h2>1. ATM Withdrawal System</h2>
+        <input type="number" id="atmBalance" placeholder="Enter Balance" required>
+        <input type="number" id="atmAmount" placeholder="Enter Amount to Withdraw" required>
+        <input type="text" id="atmPin" placeholder="Enter Pin" required>
+        <input type="text" id="atmEnteredPin" placeholder="Enter Entered Pin" required>
+        <button onclick="handleAtmWithdrawal()">Withdraw</button>
+        <p id="atmResult"></p>
+    </div>
+
+    <div class="scenario">
+        <h2>2. Online Shopping Discount & Free Shipping</h2>
+        <input type="number" id="orderAmount" placeholder="Enter Order Amount" required>
+        <button onclick="handleShopping()">Calculate Final Amount</button>
+        <p id="shoppingResult"></p>
+    </div>
+
+    <div class="scenario">
+        <h2>3. Student Grading System</h2>
+        <input type="number" id="studentMarks" placeholder="Enter Marks" required>
+        <input type="number" id="studentAttendance" placeholder="Enter Attendance (%)" required>
+        <button onclick="handleStudentGrading()">Calculate Grade</button>
+        <p id="studentResult"></p>
+    </div>
+
+    <div class="scenario">
+        <h2>4. Smart Traffic Light System</h2>
+        <select id="trafficDensity">
+            <option value="Heavy Traffic">Heavy Traffic</option>
+            <option value="Moderate Traffic">Moderate Traffic</option>
+            <option value="Light Traffic">Light Traffic</option>
+        </select>
+        <button onclick="handleTrafficLight()">Get Light Duartion</button>
+        <p id="trafficResult"></p>
+    </div>
+
+    <div class="scenario">
+        <h2>5. Movie Ticket Pricing</h2>
+        <input type="number" id="ticketAge" placeholder="Enter Age" required>
+        <input type="number" id="showTime" placeholder="Enter Show Time (24h format)" required>
+        <button onclick="handleTicketPrice()">Calculate Ticket Price</button>
+        <p id="ticketResult"></p>
+    </div>
+
+    <div class="scenario">
+        <h2>6. Job Application Filter</h2>
+        <input type="number" id="jobAge" placeholder="Enter Age" required>
+        <input type="number" id="jobExperience" placeholder="Enter Experience (years)" required>
+        <input type="text" id="jobQualification" placeholder="Enter Qualification" required>
+        <button onclick="handleJobEligibility()">Check Eligibility</button>
+        <p id="jobResult"></p>
+    </div>
+
+    <div class="scenario">
+        <h2>7. E-commerce Coupon Redemption</h2>
+        <input type="number" id="couponOrderAmount" placeholder="Enter Order Amount" required>
+        <input type="text" id="couponCode" placeholder="Enter Coupon Code" required>
+        <button onclick="handleCouponRedemption()">Apply Coupon</button>
+        <p id="couponResult"></p>
+    </div>
+
+    <div class="scenario">
+        <h2>8. Fitness Membership Plans</h2>
+        <select id="membershipPlan">
+            <option value="Basic">Basic - $20/month</option>
+            <option value="Premium">Premium - $50/month</option>
+            <option value="VIP">VIP - $80/month</option>
+        </select>
+        <label>
+            <input type="checkbox" id="wantsTrainer">Want Personal Trainer (+$30/month)
+        </label>
+        <label>
+            <input type="checkbox" id="wantsDietPlan">Want Diet Plan (+$20/month)
+        </label>
+        <button onclick="handleMembershipPlan()">Choose Plan</button>
+        <p id="memebrshipResult"></p>
+    </div>
+
+    <div class="scenario">
+        <h2>9. Electricity Bill Calculation</h2>
+        <input type="number" id="electricityUnits" placeholder="Enter Units Consumed" required>
+        <input type="number" id="electricityTime" placeholder="Enter Time of Day (24h format)" required>
+        <button onclick="handleElectricityBill()">Calculate Bill</button>
+        <p id="electricityResult"></p>
+    </div>
+
+    <div class="scenario">
+        <h2>10. Flight Ticket Booking System</h2>
+        <select id="flightClass">
+            <option value="Economy">Economy</option>
+            <option value="Business">Business</option>
+            <option value="First">First</option>
+        </select>
+        <input type="number" id="luggageWeight" placeholder="Enter Luggage Weight (kg)" required>
+        <input type="checkbox" id="isStudent">Are you a Student?
+        <input type="checkbox" id="isSenior">Are you a Senior Citizen?
+        <button onclick="handleFlightFare()">Calculate Fare</button>
+        <p id="flightResult"></p>
+    </div>
+
+    <script>
+        function handleAtmWithdrawal(){
+            const balance = parseFloat(document.getElementById('atmBalance').value);
+            const amount = parseFloat(document.getElementById('atmAmount').value);
+            const pin = document.getElementById('atmPin').value;
+            const enteredPin = document.getElementById('atmEnteredPin').value;
+            let result = '';
+
+            if ( enteredPin !== pin){
+                result = 'Oops! The Pin you entered is incorrect.';
+            } else if(amount > balance){
+                result = 'Sorry, you have insufficient funds for this withdrawal.';
+            } else if (amount % 100 !==0){
+                result = 'Please enter an amount in multiples of 100.';
+            } else {
+                result = `Success! You have withdrawn $${amount}. Your new balance is $${(balance - amount).toFixed(2)}.`;
+            }
+            document.getElementById('atmResult').innerText = result;
+        }
+
+        function handleShopping(){
+            const orderAmount = parseFloat(document.getElementById('orderAmount').value);
+            let discount = 0;
+            let shipping = 0;
+            if(orderAmount > 1000){
+                discount = 0.20 * orderAmount;
+            }else if (orderAmount >= 500){
+                discount = 0.10 * orderAmount;
+            }
+
+            if(orderAmount > 50){
+                shipping = 0;
+            }else{
+                shipping = 10;
+            }
+            const finalAmount =orderAmount - discount + shipping;
+            document.getElementById('shoppingResult').innerText = `Your final amount after discounts and shipping is $${finalAmount.toFixed(2)}.`;
+        }
+
+        function handleStudentGrading() {
+            const marks = parseFloat(document.getElementById('studentMarks').value);
+            const attendance = parseFloat(document.getElementById('studentAttendance').value);
+            let finalMarks = marks;
+
+            if (attendance > 90) {
+                finalMarks += 5; // Extra credit
+            }
+
+            let grade = '';
+            if (finalMarks >= 90) {
+                grade = 'A';
+            } else if (finalMarks >= 80) {
+                grade = 'B';
+            } else if (finalMarks >= 70) {
+                grade = 'C';
+            } else if (finalMarks >= 60) {
+                grade = 'D';
+            } else {
+                grade = 'F';
+            }
+
+            document.getElementById('studentResult').innerText = `Your final grade is: ${grade}.`;
+        }
+
+        function handleTrafficLight(){
+            const density = document.getElementById('trafficDensity').value;
+            let duartion = '';
+            switch(density){
+                case 'Heavy Traffic':
+                    duration = 'The green light will stay on for 30 seconds.';
+                    break;
+                case 'Moderate Traffic':
+                    duration = 'The green light will stay on for 40 seconds.';
+                    break;
+                case 'Light Traffic':
+                    duration = 'The green light will stay on for 60 seconds.';
+                    break;
+            }
+            document.getElementById('trafficResult').innerText = duration;
+        }
+
+        function handleTicketPrice(){
+            const age = parseFloat(document.getElementById('ticketAge').value);
+            const showTime = parseFloat(document.getElementById('showTime').value);
+            let price = 12;
+            if(showTime < 17){
+                price *=0.80;
+            }
+            if(age < 12){
+                price *= 0.60;
+            }else if (age > 60){
+                price *=0.70;
+            }
+            document.getElementById('ticketResult').innerText = `Your ticket price is $${price.toFixed(2)}.`;
+        }
+
+        function handleJobEligibility(){
+            const age = parseFloat(document.getElementById('jobAge').value);
+            const experience = parseFloat(document.getElementById('jobExperience').value);
+            const qualification = document.getElementById('jobQualification').value;
+            let result = '';
+            if (age <21 || age > 55){
+                result = 'Not eligible (Age must be between 21 and 55).';
+            }else if (experience < 2){
+                result = 'Not eligible (Must have at least 2 years of experience).';
+            }else if (qualification !== "Bachelor's Degree"){
+                result = 'Not eligible (Minimum qualification: Bachelor\'s Degree).';
+            }else{
+                result = 'Congratulations! You are eligible for the job.';
+            }
+            document.getElementById('jobResult').innerText = result;
+        }
+
+        function handleCouponRedemption(){
+            const orderAmount = parseFloat(document.getElementById('couponOrderAmount').value);
+            const couponCode = document.getElementById('couponCode').value;
+            let finalPrice = orderAmount;
+            if (couponCode === 'DISCOUNT10' && orderAmount >500){
+                finalPrice -= 0.10 * orderAmount;
+            }else if (couponCode === 'FREESHIP' && orderAmount >200){
+
+            }else{
+                finalPrice = orderAmount;
+            }
+            document.getElementById('couponResult').innerText = `Your final price after applying the coupon is $${finalPrice.toFixed(2)}.`;
+        }
+
+        function handleMembershipPlan() {
+            const plan = document.getElementById('membershipPlan').value;
+            const wantsTrainer = document.getElementById('wantsTrainer').checked;
+            const wantsDietPlan = document.getElementById('wantsDietPlan').checked;
+            let baseCost = 0;
+
+            switch (plan) {
+                case 'Basic':
+                    baseCost = 20;
+                    break;
+                case 'Premium':
+                    baseCost = 50;
+                    break;
+                case 'VIP':
+                    baseCost = 80;
+                    break;
+            }
+
+            if (wantsTrainer) {
+                baseCost += 30; // Add cost for Personal Trainer
+            }
+            if (wantsDietPlan) {
+                baseCost += 20; // Add cost for Diet Plan
+            }
+
+            document.getElementById('membershipResult').innerText = `You've selected the ${plan} plan. Your total monthly cost is $${baseCost.toFixed(2)}.`;
+        }
+
+        function handleElectricityBill(){
+            const units = parseFloat(document.getElementById('electricityUnits').value);
+            const timeOfDay = parseFloat(document.getElementById('electricityTime').value);
+            let rate = 0;
+            if(units <100){
+                rate =5;
+            }else if(units<=300){
+                rate= 4;
+            }else{
+                rate = 3;
+            }
+            let totalBill = units * rate;
+            if (timeOfDay < 8 || timeOfDay >= 20){
+                totalBill *= 1.10;
+            }
+            document.getElementById('electricityResult').innerText = `Your electricity bill is $${totalBill.toFixed(2)}. Thank you for using our service!`;
+        }
+
+        function handleFlightFare(){
+            const classType = document.getElementById('flightClass').value;
+            const luggageWeight = parseFloat(document.getElementById('luggageWeight').value);
+            const isStudent = document.getElementById('isStudent').checked;
+            const isSenior = document.getElementById('isSenior').checked;
+            let baseFare = 300;
+            let additionalCharge = 0;
+            if(classType === 'Business'){
+                additionalCharge +=200;
+            } else if(classType === 'First'){
+                additionalCharge +=500;
+            }
+            if(luggageWeight > 20){
+                additionalCharge += Math.ceil((luggageWeight - 20) / 10) * 50;
+            }
+            let finalFare = baseFare + additionalCharge;
+
+            if (isStudent){
+                finalFare *= 0.85;
+            }else if(isSenior){
+                finalFare *=0.90;
+            }
+            document.getElementById('flightResult').innerText = `Your total flight fare is $${finalFare.toFixed(2)}. Safe travels!`;
+        }
+    </script>
+</body>
+</html>
