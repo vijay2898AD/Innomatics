@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Shopping Cart Website</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <h1>Innomatics<br>Electronics<br>Store(IES)</h1>
+            <div class="cart-icon" id="cart-icon" onclick="toggleCart()">🛒<span id="item-count">0</span></div>
+            <ul class="nav-links">
+                <li><button onclick="showAllProducts()">All Products</button></li>
+                <li><button onclick="filterProducts('mobile')">Mobiles</button></li>
+                <li><button onclick="filterProducts('laptop')">Laptops</button></li>
+                <li><button onclick="filterProducts('accessories')">Accessories</button></li>
+                <li><button onclick="filterProducts('electronics')">Electronics</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="product-list" id="product-list">
+
+    </div>
+
+    <div class="cart" id="cart">
+        <h2>Your cart</h2>
+        <div id="cart-items"></div>
+        <div class="total">
+            <strong>Total: $<span id="total-price">0..00</span></strong>
+        </div>
+        <button id="empty-cart">Empty Cart</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
