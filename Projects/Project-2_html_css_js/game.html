@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Match Game</title>
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Memory Match Game</h1>
+        </header>
+        <div id="landing-page">
+            <h2>Select Difficulty</h2>
+            <div class="difficulty">
+                <button data-difficulty="easy" onclick="setDifficulty('easy')">Easy</button>
+                <button data-difficulty="medium" onclick="setDifficulty('medium')">Medium</button>
+                <button data-difficulty="hard" onclick="setDifficulty('hard')">Hard</button>
+            </div>
+            <h2>Select a Category</h2>
+            <div class="categories">
+                <button onclick="startGame('fruits')">Fruits</button>
+                <button onclick="startGame('emojis')">Emojis</button>
+                <button onclick="startGame('animals')">Animals</button>
+                <button onclick="startGame('planets')">Planets</button>
+                <button onclick="startGame('flags')">Flags</button>
+            </div>
+        </div>
+        <div id="game-container" class="hidden">
+            <div id="score">Score: 0</div>
+            <div id="timer">Time: 30</div>
+            <div id="cards-container"></div>
+            <div id="game-over" class="hidden"></div>
+            <button id="restart-btn" onclick="restartGame()">Restart</button>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>

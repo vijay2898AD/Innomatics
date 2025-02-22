@@ -1,0 +1,112 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('card.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.container{
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+}
+
+header h1{
+    margin-bottom: 10px;
+}
+
+button{
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s;
+    width: 90%;
+    max-width: 250px;
+}
+
+button:hover{
+    background-color: #007BFF;
+    color: white;
+}
+
+.categories button, .difficulty button{
+    background-color: #e9ecef;
+}
+
+#game-container{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+#cards-container{
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.card{
+    width: 100px;
+    max-width: 80px;
+    height: 80px;
+    aspect-ratio: 1/1;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+    background-image: url('card_in.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.card:hover{
+    transform: scale(1.1);
+}
+
+.card.flipped{
+    background-color: #28a745;
+    background-image: none;
+    color: black;
+    transform: rotateY(180deg);
+}
+
+.hidden{
+    display: none;
+}
+
+#game-over{
+    margin-top: 20px;
+    font-size: 24px;
+    color: red;
+}
+
+#restart-btn{
+    background-color: #dc3545;
+    color: white;
+}
+
+.selected{
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #0056b3;
+}
