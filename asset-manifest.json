@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Innomatics/React/Assignment/static/css/main.23735ec2.css",
-    "main.js": "/Innomatics/React/Assignment/static/js/main.df509bad.js",
-    "static/js/453.81f383cb.chunk.js": "/Innomatics/React/Assignment/static/js/453.81f383cb.chunk.js",
-    "index.html": "/Innomatics/React/Assignment/index.html",
-    "main.23735ec2.css.map": "/Innomatics/React/Assignment/static/css/main.23735ec2.css.map",
-    "main.df509bad.js.map": "/Innomatics/React/Assignment/static/js/main.df509bad.js.map",
-    "453.81f383cb.chunk.js.map": "/Innomatics/React/Assignment/static/js/453.81f383cb.chunk.js.map"
+    "main.css": "/Innomatics/static/css/main.23735ec2.css",
+    "main.js": "/Innomatics/static/js/main.5d47605a.js",
+    "static/js/453.81f383cb.chunk.js": "/Innomatics/static/js/453.81f383cb.chunk.js",
+    "index.html": "/Innomatics/index.html",
+    "main.23735ec2.css.map": "/Innomatics/static/css/main.23735ec2.css.map",
+    "main.5d47605a.js.map": "/Innomatics/static/js/main.5d47605a.js.map",
+    "453.81f383cb.chunk.js.map": "/Innomatics/static/js/453.81f383cb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.23735ec2.css",
-    "static/js/main.df509bad.js"
+    "static/js/main.5d47605a.js"
   ]
 }
