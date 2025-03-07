@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Innomatics/React/Assignment/todo-list/static/css/main.23735ec2.css",
+    "main.js": "/Innomatics/React/Assignment/todo-list/static/js/main.53d0899d.js",
+    "static/js/453.81f383cb.chunk.js": "/Innomatics/React/Assignment/todo-list/static/js/453.81f383cb.chunk.js",
+    "index.html": "/Innomatics/React/Assignment/todo-list/index.html",
+    "main.23735ec2.css.map": "/Innomatics/React/Assignment/todo-list/static/css/main.23735ec2.css.map",
+    "main.53d0899d.js.map": "/Innomatics/React/Assignment/todo-list/static/js/main.53d0899d.js.map",
+    "453.81f383cb.chunk.js.map": "/Innomatics/React/Assignment/todo-list/static/js/453.81f383cb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.23735ec2.css",
+    "static/js/main.53d0899d.js"
+  ]
+}
