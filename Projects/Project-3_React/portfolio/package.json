@@ -2,7 +2,7 @@
   "name": "portfolio-new",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vijay2898AD.github.io/Innomatics/Projects/Project-3_React/portfolio",
+  "homepage": "https://vijay2898ad.github.io/Innomatics/Projects/Project-3_React/portfolio/",
   "dependencies": {
     "cra-template": "1.2.0",
     "framer-motion": "^11.15.0",
