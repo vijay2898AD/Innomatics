@@ -18,16 +18,16 @@ jobs:
           cd React/Assignment/todo-list
           npm install
           npm run build
-          mkdir -p ../../builds/todo-list
-          cp -r build/* ../../builds/todo-list
+          mkdir -p ../../../builds/todo-list
+          cp -r build/* ../../../builds/todo-list
 
       - name: Build portfolio
         run: |
           cd Projects/Project-3_React/portfolio
           npm install
           npm run build
-          mkdir -p ../../builds/portfolio
-          cp -r build/* ../../builds/portfolio
+          mkdir -p ../../../builds/portfolio
+          cp -r build/* ../../../builds/portfolio
 
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
